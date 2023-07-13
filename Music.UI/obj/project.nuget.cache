@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "u+kPcNPYGwaPhegyRHqaLsPsMKzgIlvJEtacb70ffWHRWJJka+dPO8rRNzl46kg7UVvXEnxpDhPSAYOZiStjyg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ranjan\\Documents\\MusicManagementSystem\\Music.UI\\Music.UI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ranjan\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
