@@ -1,0 +1,92 @@
+﻿@page "/Artist"
+
+<h3>Artist</h3>
+
+<div>
+    <EditForm Model="@ArtistModel_V" OnSubmit="@SubmitEventHandler">
+        <fieldset>
+
+            <div class="form-group row p-4">
+                <div class="mb-3 col-md-3">
+                    <label class="form-label">Name</label>
+                    <InputText @bind-Value="ArtistModel_V.Name" class="form-control"></InputText>
+                </div>
+
+
+                <div class="mb-3 col-md-2">
+                    <label class="form-label">Genre</label>
+                    <InputText @bind-Value="ArtistModel_V.genre" class="form-control"></InputText>
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label class="form-label">Popularity</label>
+                    <InputText @bind-Value="ArtistModel_V.popularity" class="form-control"></InputText>
+                </div>
+                <br />
+                @if (isSave)
+                {
+                    <div class="mb-3 col-md-4">
+                        
+                            <button type="submit" title="add data" class="btn btn-success">
+                                <i class="fa-solid fa-floppy-disk fa-sm"></i>
+                                Save
+                            </button>
+                            <button type="button" @onclick="ClearModelNew" title="reset form" class="btn btn-dark">
+                                <i class="fa-solid fa-arrow-rotate-right fa-sm"></i>
+                                Reset
+                            </button>
+                        
+                    </div>
+                }
+                else
+                {
+                    <div class="form col-md-4">
+                        
+                            <button type="submit" title="add data" class="btn btn-warning">
+                                <i class="fa-solid fa-floppy-disk fa-sm"></i>
+                                Update
+                            </button>
+                            <button id="ResetBtn" type="button" @onclick="ClearModelNew" title="reset form" class="btn btn-dark">
+                                <i class="fa-solid fa-arrow-rotate-right fa-sm"></i>
+                                Cancel
+                            </button>
+                        
+                    </div>
+                }
+            </div>
+        </fieldset>
+
+
+    </EditForm>
+
+    <div>
+        <table class="table text-black">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Popularity</th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in artists)
+            {
+                <tr>
+                    <td>@item.ArtistID</td>
+                    <td>@item.Name</td>
+                    <td>@item.genre</td>
+                    <td>@item.popularity</td>
+                    <td>
+                        <div>
+                            <div>
+                                <button @onclick="@(()=>edit(item.ArtistID))">Edit</button>&nbsp;
+                                <button @onclick="@(()=>delete(item.ArtistID))">Delete</button>
+                            </div>
+
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
