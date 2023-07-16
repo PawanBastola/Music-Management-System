@@ -1,5 +1,6 @@
 ﻿using DapperWebApi.Entities;
 using DapperWebApi.IRepository;
+using DapperWebApi.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,12 @@ namespace DapperWebApi.Controllers
             var Statuses = await _AlbumRepository.GetAlbum();
             return Ok(Statuses);
         }
-
+        [HttpGet("Search/{filter}")]
+        public async Task<IActionResult> SearchAlbum(string filter)
+        {
+            var Tracks = await _AlbumRepository.SearchAlbum(filter);
+            return Ok(Tracks);
+        }
         [HttpGet("{ID}")]
         public async Task<IActionResult> GetAlbumByID(int ID)
         {
@@ -34,8 +40,6 @@ namespace DapperWebApi.Controllers
                 }
                 return Ok(Album);
 
-                /*var json = JsonSerializer.Serialize(Album);
-                return Content(json, "application/json");*/
             }
             catch (Exception)
             {

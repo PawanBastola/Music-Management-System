@@ -1,5 +1,6 @@
 ﻿using DapperWebApi.Entities;
 using DapperWebApi.IRepository;
+using DapperWebApi.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,15 @@ namespace DapperWebApi.Controllers
             var Statuses = await _artistRepository.GetArtist();
             return Ok(Statuses);
         }
-        
+
+        [HttpGet("Search/{filter}")]
+        public async Task<IActionResult> SearchTrack(string filter)
+        {
+            var Tracks = await _artistRepository.SearchArtist(filter);
+            return Ok(Tracks);
+        }
+
+
         [HttpGet("{ID}")]
         public async Task<IActionResult> GetArtistByID(int ID)
         {

@@ -21,6 +21,13 @@ namespace DapperWebApi.Controllers
             return Ok(Playlists);
         }
 
+        [HttpGet("Search/{filter}")]
+        public async Task<IActionResult> GetPlaylist(string filter)
+        {
+            var Playlists = await _PlaylistRepository.SearchPlaylist(filter);
+            return Ok(Playlists);
+        }
+
         [HttpGet("{ID}")]
         public async Task<IActionResult> GetPlaylistByID(int ID)
         {

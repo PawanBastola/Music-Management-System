@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DapperWebApi.Context;
 using DapperWebApi.Entities;
+using DapperWebApi.Entities.ResponseModel;
 using DapperWebApi.IRepository;
 
 namespace DapperWebApi.Repository
@@ -22,6 +23,17 @@ namespace DapperWebApi.Repository
             {
                 var status = await connection.QueryAsync<Album>(query);
                 return status.ToList();
+            }
+        }
+
+        public async Task<IEnumerable<AlbumResponseModel>> SearchAlbum(string filter)
+        {
+            filter = filter + "%";
+            var query = "SELECT Distinct A.AlbumID, A.Title, AR.Name ArtistName, T.Title TrackTitle, ReleaseDate FROM tblAlbum A WITH(NOLOCK) LEFT JOIN tblTrack T ON T.AlbumID= A.AlbumID LEFT JOIN tblArtist AR ON T.ArtistID=AR.ArtistID Where A.Title Like @filter OR AR.Name LIKE @filter";
+            using (var connection = context.CreateConnection())
+            {
+                var searchresult = await connection.QueryAsync<AlbumResponseModel>(query, new { filter });
+                return searchresult.ToList();
             }
         }
 

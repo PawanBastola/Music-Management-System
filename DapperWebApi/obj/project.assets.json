@@ -2253,11 +2253,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ranjan\\Documents\\MusicManagementSystem\\DapperWebApi\\DapperWebApi.csproj",
+      "projectUniqueName": "C:\\Users\\ranjan\\Documents\\github\\Music-Management-System\\DapperWebApi\\DapperWebApi.csproj",
       "projectName": "DapperWebApi",
-      "projectPath": "C:\\Users\\ranjan\\Documents\\MusicManagementSystem\\DapperWebApi\\DapperWebApi.csproj",
+      "projectPath": "C:\\Users\\ranjan\\Documents\\github\\Music-Management-System\\DapperWebApi\\DapperWebApi.csproj",
       "packagesPath": "C:\\Users\\ranjan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ranjan\\Documents\\MusicManagementSystem\\DapperWebApi\\obj\\",
+      "outputPath": "C:\\Users\\ranjan\\Documents\\github\\Music-Management-System\\DapperWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ranjan\\AppData\\Roaming\\NuGet\\NuGet.Config",

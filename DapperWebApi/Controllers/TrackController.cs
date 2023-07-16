@@ -22,6 +22,13 @@ namespace DapperWebApi.Controllers
             return Ok(Tracks);
         }
 
+        [HttpGet("Search/{filter}")]
+        public async Task<IActionResult> SearchTrack(string filter)
+        {
+            var Tracks = await _TrackRepository.SearchTrack(filter);
+            return Ok(Tracks);
+        }
+
         [HttpGet("{ID}")]
         public async Task<IActionResult> GetTrackByID(int ID)
         {

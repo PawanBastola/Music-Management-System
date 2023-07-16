@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DapperWebApi.Context;
 using DapperWebApi.Entities;
+using DapperWebApi.Entities.ResponseModel;
 using DapperWebApi.IRepository;
 
 namespace DapperWebApi.Repository
@@ -21,6 +22,18 @@ namespace DapperWebApi.Repository
             {
                 var status = await connection.QueryAsync<Artist>(query);
                 return status.ToList();
+            }
+        }
+
+
+        public async Task<IEnumerable<Artist>> SearchArtist(string filter)
+        {
+            filter = filter + "%";
+            var query = "SELECT ArtistID, Name, genre, popularity, CreatedBY FROM tblArtist WITH(NOLOCK) Where Name Like @filter OR genre LIKE @filter";
+            using (var connection = context.CreateConnection())
+            {
+                var searchresult = await connection.QueryAsync<Artist>(query, new { filter });
+                return searchresult.ToList();
             }
         }
 

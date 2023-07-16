@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ranjan\\Documents\\MusicManagementSystem\\Music.UI\\Music.UI.csproj",
+      "projectUniqueName": "C:\\Users\\ranjan\\Documents\\github\\Music-Management-System\\Music.UI\\Music.UI.csproj",
       "projectName": "Music.UI",
-      "projectPath": "C:\\Users\\ranjan\\Documents\\MusicManagementSystem\\Music.UI\\Music.UI.csproj",
+      "projectPath": "C:\\Users\\ranjan\\Documents\\github\\Music-Management-System\\Music.UI\\Music.UI.csproj",
       "packagesPath": "C:\\Users\\ranjan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ranjan\\Documents\\MusicManagementSystem\\Music.UI\\obj\\",
+      "outputPath": "C:\\Users\\ranjan\\Documents\\github\\Music-Management-System\\Music.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ranjan\\AppData\\Roaming\\NuGet\\NuGet.Config",

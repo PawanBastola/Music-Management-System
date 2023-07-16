@@ -16,10 +16,21 @@ namespace DapperWebApi.Repository
         }
         public async Task<IEnumerable<TrackResponseModel>> GetTrack()
         {
-            var query = "Select TrackID,T.Title,duration,T.genre,T.popularity,T.ArtistiD, A.Name ArtistName,T.AlbumID, AL.Title Album from tblTrack T With(NOLOCK)\r\nLeft Join tblArtist A With(NOLOCK) ON A.ArtistID=T.ArtistID\r\nLeft Join tblAlbum AL With(NOLOCK) ON AL.AlbumID=T.AlbumID";
+            var query = "Select TrackID,T.Title,duration,T.genre,T.popularity,T.ArtistiD, A.Name ArtistName,T.AlbumID, AL.Title Album from tblTrack T With(NOLOCK) Left Join tblArtist A With(NOLOCK) ON A.ArtistID=T.ArtistID Left Join tblAlbum AL With(NOLOCK) ON AL.AlbumID=T.AlbumID";
             using (var connection = context.CreateConnection())
             {
                 var status = await connection.QueryAsync<TrackResponseModel>(query);
+                return status.ToList();
+            }
+        }
+
+        public async Task<IEnumerable<TrackResponseModel>> SearchTrack(string filter)
+        {
+            filter = filter + "%";
+            var query = "Select TrackID,T.Title,duration,T.genre,T.popularity,T.ArtistiD, A.Name ArtistName,T.AlbumID, AL.Title Album from tblTrack T With(NOLOCK) Left Join tblArtist A With(NOLOCK) ON A.ArtistID=T.ArtistID Left Join tblAlbum AL With(NOLOCK) ON AL.AlbumID=T.AlbumID where T.genre like @filter OR T.Title like @filter OR A.Name like @filter";
+            using (var connection = context.CreateConnection())
+            {
+                var status = await connection.QueryAsync<TrackResponseModel>(query, new {filter});
                 return status.ToList();
             }
         }

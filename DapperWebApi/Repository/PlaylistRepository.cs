@@ -24,6 +24,17 @@ namespace DapperWebApi.Repository
             }
         }
 
+        public async Task<IEnumerable<PlaylistResponseModel>> SearchPlaylist(string filter)
+        {
+            filter = filter + "%";
+            var query = "Select PlaylistID,P.Title, Description,P.TrackID, P.Title from tblPlaylist P With(NOLOCK) Left Join tblTrack T With(NOLOCK) ON T.TrackID=P.TrackID WHERE P.CreatedBy Like @Filter OR P.Title LIKE @filter";
+            using (var connection = context.CreateConnection())
+            {
+                var status = await connection.QueryAsync<PlaylistResponseModel>(query,new {filter});
+                return status.ToList();
+            }
+        }
+
         public async Task<Playlist> GetPlaylistByID(int ID)
         {
             var query = "Select PlaylistID,Title,Description,TrackID from tblPlaylist With(NOLOCK) Where PlaylistID=@ID";
